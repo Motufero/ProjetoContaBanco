@@ -13,11 +13,11 @@ using namespace std;
 void iniciar (){
     ContaBanco contaAtual;
     vector<ContaBanco> contas = {};
-    int origem;
-    int destino;
+    int origem; //conta de origem da transferencia
+    int destino; //conta destino da transferencia
     float valor;
-    int verOrigem = 0;
-    int verDestino = 0;
+    int verOrigem = 0;  //para validar se conta origem existe
+    int verDestino = 0;  //para validar se conta destino existe
 
     int escolha;
     int provis;
