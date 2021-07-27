@@ -1,5 +1,6 @@
 #include<iostream>
 #include<stdio.h>
+#include<cmath>
 
 #include<vector>
 
@@ -45,7 +46,13 @@ void ContaBanco::sacar(){
 
 }
 
-void ContaBanco::renderJuros(){}
+void ContaBanco::renderJuros(){
+	cout<<"\n---------------------RENDENDO-JUROS----------------"<<endl;
+	float temp;
+	temp = saldo + (taxaJuros/100 * saldo);
+	saldo = floorf(temp*100) / 100;
+	cout<< "\nSaldo da conta atualizado para: " << saldo << "R$" <<endl; 
+}
 
 void ContaBanco::setJuros(float newJuros){
 	this->taxaJuros = newJuros;

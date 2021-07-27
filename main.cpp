@@ -32,6 +32,7 @@ void iniciar (){
         cout << "\nDigite '4' para exibir dados da conta." << endl;
         cout << "\nDigite '5' para exibir as contas." << endl;
         cout << "\nDigite '6' para realizar uma transferencia." << endl;
+		cout << "\nDigite '7' para render juros em uma conta poupanca." << endl;
 		cout << "\nDigite '8' para render juros para as contas tipo 'poupanca'." << endl;
         cout << "\nDigite '10' para sair." << endl;
 
@@ -112,6 +113,17 @@ void iniciar (){
             cout<<"\nDeposito realizado com sucesso. "<<endl;
             }
             break;
+		case 7:
+			cout<< "\nDIGITE O NUMERO DA CONTA: "<<endl;
+            cin >> provis;
+            for (int i = 0; i < tamanho; i++){
+                if(contas[i].getId()==provis && contas[i].getTipoDeConta() == 2){
+                    contas[i].renderJuros();
+                    break;
+                }
+            }
+
+		break;
 		case 8:
 			cout << "\nDigite o novo valor de juros: " <<endl;
 			cin >> novaTaxaJuros;
