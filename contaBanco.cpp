@@ -13,6 +13,11 @@ int ContaBanco::getId(){
 	return this->idConta;
 }
 
+int ContaBanco::getTipoDeConta(){
+	return this->tipoDeConta;
+}
+
+
 void ContaBanco::depositar(float dep){
 	saldo = saldo  + dep;
 }
@@ -28,7 +33,9 @@ void ContaBanco::depositar(){
     cin>>deposito;
     saldo = saldo + deposito;
     cout<<"\nValor depositado com exito!"<<endl;
-
+	if (tipoDeConta == 1) {
+		this->calcularBonus(deposito, 0);
+	}
 }
 
 void ContaBanco::sacar(){
@@ -54,7 +61,25 @@ void ContaBanco::exibirDados(){
     cout<<"\nSeu saldo: "<<saldo<<"R$"<<endl;
 }
 
-void calcularBonus(float valor){}
+
+void ContaBanco::calcularBonus(float valor, int tipoDeOperacao){
+	if (tipoDeOperacao == 0){ // 0 = deposito
+		contadorDeposito += valor;
+		while (contadorDeposito >= 100){
+			contadorDeposito = contadorDeposito - 100;
+			bonus = bonus + 1;
+		}
+	}
+	if (tipoDeOperacao == 1){ //1 = transferencia
+		contadorTransf += valor;
+        while (contadorTransf >= 200){
+            contadorTransf = contadorTransf - 200;
+            bonus = bonus + 1;
+        }
+
+	}	
+}
+
 
 void ContaBanco::criarConta(){
     int temporarioID;
@@ -70,6 +95,8 @@ void ContaBanco::criarConta(){
 	if (temporarioTipo == 1){
 		this->tipoDeConta = 1;
 		this->bonus = 10;
+		this->contadorDeposito = 0;
+		this->contadorTransf = 0;
 	}	
 
 	else {
