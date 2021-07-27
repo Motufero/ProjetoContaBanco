@@ -4,6 +4,9 @@
 #define _CONTABANCO_H_
 
 class ContaBanco{
+		int tipoDeConta;
+		float taxaJuros;
+
         int idConta;
         float saldo;
 
@@ -16,6 +19,10 @@ class ContaBanco{
         void sacar(float);
         void exibirDados();
         int getId();
+        int getTipoDeConta();
+
+		void setJuros(float); 
+		void renderJuros(); 
 
 };
 
