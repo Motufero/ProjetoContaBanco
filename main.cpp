@@ -108,6 +108,10 @@ void iniciar (){
                 if (destino == contas[i].getId())
                 {
                     contas[i].depositar(valor);
+                    if (contas[i].getTipoDeConta() == 1) {
+                        contas[i].calcularBonus(valor, 1);
+                     }
+
                 }
                 }
             cout<<"\nDeposito realizado com sucesso. "<<endl;
