@@ -33,6 +33,9 @@ void ContaBanco::depositar(){
     cin>>deposito;
     saldo = saldo + deposito;
     cout<<"\nValor depositado com exito!"<<endl;
+    if (tipoDeConta == 1) {
+        this->calcularBonus(deposito, 0);
+    }
 
 }
 
@@ -44,6 +47,24 @@ void ContaBanco::sacar(){
     saldo = saldo - saque;
     cout<<"\nValor sacado com exito!"<<endl;
 
+}
+
+void ContaBanco::calcularBonus(float valor, int tipoDeOperacao){
+    if (tipoDeOperacao == 0){ // 0 = deposito
+        contadorDeposito += valor;
+        while (contadorDeposito >= 100){
+            contadorDeposito = contadorDeposito - 100;
+            bonus = bonus + 1;
+        }
+    }
+    if (tipoDeOperacao == 1){ //1 = transferencia
+        contadorTransf += valor;
+        while (contadorTransf >= 150){
+            contadorTransf = contadorTransf - 150;
+            bonus = bonus + 1;
+        }
+
+    }
 }
 
 void ContaBanco::renderJuros(){
@@ -63,6 +84,9 @@ void ContaBanco::exibirDados(){
 	if (this->tipoDeConta==2){
         cout<<"\nCONTA POUPANCA, seu juros e: "<<taxaJuros<<"% "<<endl;
     }
+    if (this->tipoDeConta==1){
+        cout<<"\nCONTA BONUS, seu bonus e: "<<bonus<<" pontos!"<<endl;
+    }
     if (this->tipoDeConta==0){
         cout<<"\nCONTA PADRAO"<<endl;
     }
@@ -77,18 +101,23 @@ void ContaBanco::criarConta(){
 	int temporarioTipo;
 
     cout<<"\n---------------CRIANDO-CONTA-----------------"<<endl;
-	cout<<"\nDigite o tipo da conta: 0 para normal, 2 para poupança."<<endl;
+	cout<<"\nDigite o tipo da conta: 0 para normal, 1 para bonus, 2 para poupança."<<endl;
     cin>>temporarioTipo;
     if (temporarioTipo == 0){
         this->tipoDeConta = 0;
 		this->taxaJuros = 0;
+    }
+    if (temporarioTipo == 1){
+        this->tipoDeConta = 1;
+        this->bonus = 10;
+        this->contadorDeposito = 0;
+        this->contadorTransf = 0;
     }
     if (temporarioTipo == 2){
         this->tipoDeConta = 2;
         this->taxaJuros = 5;
     }
 	else {
-		cout<<"\nValor Incorreto, encerrando o processo..."<<endl;
 		//TO-DO encerrar a função
 	}
 
