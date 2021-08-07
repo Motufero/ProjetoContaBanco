@@ -99,6 +99,7 @@ void ContaBanco::exibirDados(){
 void ContaBanco::criarConta(){
     int temporario;
 	int temporarioTipo;
+	float saldoInicial;
 
     cout<<"\n---------------CRIANDO-CONTA-----------------"<<endl;
 	cout<<"\nDigite o tipo da conta: 0 para normal, 1 para bonus, 2 para poupança."<<endl;
@@ -125,8 +126,21 @@ void ContaBanco::criarConta(){
     cin>>temporario;
     if (temporario > 0){
         this->idConta = temporario;
-        this->saldo = 0;
-        cout<<"\nConta criada com sucesso! "<<endl;
+	    if (temporarioTipo == 2){
+    	    cout<<"\nDigite o saldo inicial da conta: "<<endl;
+			cin>>saldoInicial;
+			if (saldoInicial >= 0){
+				this->saldo = saldoInicial;
+			}
+			else {
+				cout<<"\nSaldo inicial não pode ser negativo! Iniciando conta com saldo = 0R$ "<<endl;
+				this->saldo = 0;
+			}
+	    }
+		else{
+        	this->saldo = 0;
+		}
+    	cout<<"\nConta criada com sucesso! "<<endl;
     }
     else{
         cout<<"\nERRO, numero da conta não pode ser menor ou igual a zero! "<<endl;
