@@ -14,6 +14,10 @@ int ContaBanco::getId(){
 	return this->idConta;
 }
 
+float ContaBanco::getSaldo(){
+	return this->saldo;
+}
+
 int ContaBanco::getTipoDeConta(){
     return this->tipoDeConta;
 }
@@ -44,9 +48,19 @@ void ContaBanco::sacar(){
     cout<<"\n------------------SACANDO-------------------"<<endl;
     cout<<"\nDigite o valor a sacar:"<<endl;
     cin>>saque;
-    saldo = saldo - saque;
-    cout<<"\nValor sacado com exito!"<<endl;
-
+	if (this -> tipoDeConta == 2){
+		if (this->saldo - saque < 0) {
+			cout<<"\nERRO, SALDO INSUFICIENTE PARA A OPERAÇÃO! "<< endl;
+		}
+		else {
+			saldo = saldo - saque;
+    		cout<<"\nValor sacado com exito!"<<endl;
+		}
+	}
+	else {
+    	saldo = saldo - saque;
+    	cout<<"\nValor sacado com exito!"<<endl;
+	}
 }
 
 void ContaBanco::calcularBonus(float valor, int tipoDeOperacao){
