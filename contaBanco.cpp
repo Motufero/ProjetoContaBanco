@@ -59,8 +59,8 @@ void ContaBanco::calcularBonus(float valor, int tipoDeOperacao){
     }
     if (tipoDeOperacao == 1){ //1 = transferencia
         contadorTransf += valor;
-        while (contadorTransf >= 200){
-            contadorTransf = contadorTransf - 200;
+        while (contadorTransf >= 150){
+            contadorTransf = contadorTransf - 150;
             bonus = bonus + 1;
         }
 
