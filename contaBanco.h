@@ -27,6 +27,7 @@ class ContaBanco{
         void exibirDados();
         int getId();
         int getTipoDeConta();
+		float getSaldo();
 
 		void setJuros(float); 
 		void renderJuros(); 

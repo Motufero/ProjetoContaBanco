@@ -18,6 +18,10 @@ int ContaBanco::getTipoDeConta(){
     return this->tipoDeConta;
 }
 
+float ContaBanco::getSaldo(){
+	return this->saldo;
+}
+
 void ContaBanco::depositar(float dep){
 	saldo = saldo  + dep;
 }
@@ -44,9 +48,19 @@ void ContaBanco::sacar(){
     cout<<"\n------------------SACANDO-------------------"<<endl;
     cout<<"\nDigite o valor a sacar:"<<endl;
     cin>>saque;
-    saldo = saldo - saque;
-    cout<<"\nValor sacado com exito!"<<endl;
-
+	if (this->tipoDeConta == 0 || this->tipoDeConta == 1){
+		if (saldo - saque < (-1000)){
+			cout<<"\nSALDO ATINGIU LIMITE MÍNIMO, IMPOSSÍVEL SACAR DA CONTA! " <<endl;
+		}
+		else {
+	    	saldo = saldo - saque;
+    		cout<<"\nValor sacado com exito!"<<endl;	
+		}
+	}
+	if (this->tipoDeConta == 0) {
+    	saldo = saldo - saque;
+    	cout<<"\nValor sacado com exito!"<<endl;
+	}
 }
 
 void ContaBanco::calcularBonus(float valor, int tipoDeOperacao){

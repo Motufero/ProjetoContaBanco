@@ -86,11 +86,19 @@ void iniciar (){
             cin >> destino;
             cout << "\nDigite o valor da transferencia: " << endl;
             cin >> valor;
+			verOrigem = 0;
+			verDestino = 0;
             for (int i = 0; i < tamanho; i++)
             {
                 if (origem == contas[i].getId())
             {
                 verOrigem = 1;
+				if (contas[i].getTipoDeConta() == 0 || contas[i].getTipoDeConta() == 1){
+					if (contas[i].getSaldo() - valor < (-1000)){
+						cout << "\nERRO, SALDO DA CONTA ORIGEM ATINGIU O LIMITE MÍNIMO" <<endl;
+						verOrigem = 0;
+					}
+				}
             }
                 if (destino == contas[i].getId())
             {
