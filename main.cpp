@@ -99,6 +99,12 @@ void iniciar (){
 						verOrigem = 0;
 					}
 				}
+                if (contas[i].getTipoDeConta() == 2){
+                    if (contas[i].getSaldo() - valor < 0){
+                        cout<<"\nERRO, SALDO DA CONTA DE ORIGEN INSUFICIENTE! "<<endl;
+                        verOrigem = 0;
+                    }
+                }
             }
                 if (destino == contas[i].getId())
             {

@@ -57,9 +57,14 @@ void ContaBanco::sacar(){
     		cout<<"\nValor sacado com exito!"<<endl;	
 		}
 	}
-	if (this->tipoDeConta == 0) {
-    	saldo = saldo - saque;
-    	cout<<"\nValor sacado com exito!"<<endl;
+	if (this->tipoDeConta == 2) {
+        if (this->saldo - saque < 0) {
+            cout<<"\nERRO, SALDO INSUFICIENTE PARA A OPERAÇÃO! "<< endl;
+        }
+        else {
+            saldo = saldo - saque;
+            cout<<"\nValor sacado com exito!"<<endl;
+        }
 	}
 }
 
