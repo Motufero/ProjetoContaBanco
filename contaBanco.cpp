@@ -14,12 +14,12 @@ int ContaBanco::getId(){
 	return this->idConta;
 }
 
-int ContaBanco::getTipoDeConta(){
-    return this->tipoDeConta;
-}
-
 float ContaBanco::getSaldo(){
 	return this->saldo;
+}
+
+int ContaBanco::getTipoDeConta(){
+    return this->tipoDeConta;
 }
 
 void ContaBanco::depositar(float dep){
