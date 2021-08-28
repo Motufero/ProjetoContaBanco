@@ -1,0 +1,24 @@
+name: Workflow
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: ContaCompile
+      run: | 
+        g++ -std=c++11 contaBanco.cpp -o contaBanco.o -c 
+    - name: MainCompile
+      run: |
+        g++ -std=c++11 main.cpp -o main.o -c
+    - name: link
+      run: |
+        g++ main.o contaBanco.o
+
