@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    #-name: dependencies
+    #run: |
+    #   apt-get install gcc
+    #   não é necessário, pois "ubunto-latest" já vem com o compilador
     - name: ContaCompile
       run: | 
         g++ -std=c++11 contaBanco.cpp -o contaBanco.o -c 
