@@ -27,13 +27,13 @@ jobs:
     - name: link
       run: |
         g++ main.o contaBanco.o
-    - uses: sonarsource/sonarqube-scan-action@release
+    - uses: sonarsource/sonarqube-scan-action@development
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # Código adicional para bloquear o push caso código não passe nos 
       # critérios do SonarQube
-      # - uses: sonarsource/sonarqube-quality-gate-action@release
+      # - uses: sonarsource/sonarqube-quality-gate-action@development
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
