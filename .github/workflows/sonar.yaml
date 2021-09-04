@@ -28,7 +28,7 @@ jobs:
       run: |
         g++ main.o contaBanco.o
     - uses: sonarsource/sonarqube-scan-action@release
-        env:
+      env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # Código adicional para bloquear o push caso código não passe nos 
