@@ -27,7 +27,7 @@ jobs:
     - name: link
       run: |
         g++ main.o contaBanco.o
-    - uses: sonarsource/sonarqube-scan-action@development
+    - uses: sonarsource/sonarqube-scan-action@master
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
