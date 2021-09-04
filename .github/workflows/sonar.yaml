@@ -1,0 +1,41 @@
+name: Sonarflow
+
+on:
+  push:
+    branches: [ release ]
+  pull_request:
+    branches: [ release ]
+
+jobs:
+  buildCheck:
+  
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          fetch-depth: 0
+    #-name: dependencies
+    #run: |
+    #   apt-get install gcc
+    #   não é necessário, pois "ubunto-latest" já vem com o compilador
+    - name: ContaCompile
+      run: | 
+        g++ -std=c++11 contaBanco.cpp -o contaBanco.o -c 
+    - name: MainCompile
+      run: |
+        g++ -std=c++11 main.cpp -o main.o -c
+    - name: link
+      run: |
+        g++ main.o contaBanco.o
+    - uses: sonarsource/sonarqube-scan-action@release
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # Código adicional para bloquear o push caso código não passe nos 
+      # critérios do SonarQube
+      # - uses: sonarsource/sonarqube-quality-gate-action@release
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
+        
