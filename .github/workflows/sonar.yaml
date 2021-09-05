@@ -38,4 +38,14 @@ jobs:
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
-        
+    - name: CreateReleaseFolder
+      run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+    - name: SwitchToRelease
+      run: |
+        cd release
+        ls -la
+    - name: BumpVersionAndPushTag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        REPO_OWNER: Motufero
