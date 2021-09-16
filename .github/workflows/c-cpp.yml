@@ -15,6 +15,7 @@ jobs:
     #-name: dependencies
     #run: |
     #   apt-get install gcc
+    #   comentário 
     #   não é necessário, pois "ubunto-latest" já vem com o compilador
     - name: ContaCompile
       run: | 
